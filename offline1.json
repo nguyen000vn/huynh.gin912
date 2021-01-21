@@ -1,0 +1,862 @@
+[
+    {
+        "id": "32f9ca17.4a8c16",
+        "type": "tab",
+        "label": "[USB] Stream + Capture img",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "6d581fa9.a95da",
+        "type": "ui_webcam",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "group": "65b3c6df.dd39d8",
+        "order": 0,
+        "width": 0,
+        "height": 5,
+        "countdown": false,
+        "autoStart": true,
+        "hideCaptureButton": false,
+        "showImage": "2",
+        "format": "png",
+        "x": 140,
+        "y": 440,
+        "wires": [
+            [
+                "235253d2.71863c",
+                "eb243bc5.9c93d8",
+                "b431d687.a98898"
+            ]
+        ]
+    },
+    {
+        "id": "aac3895c.9aec58",
+        "type": "camera",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "x": 150,
+        "y": 400,
+        "wires": [
+            [
+                "eb243bc5.9c93d8",
+                "235253d2.71863c",
+                "b431d687.a98898"
+            ]
+        ]
+    },
+    {
+        "id": "eb243bc5.9c93d8",
+        "type": "jimp-image",
+        "z": "32f9ca17.4a8c16",
+        "name": "output as image",
+        "data": "payload",
+        "dataType": "msg",
+        "ret": "img",
+        "parameter1": "",
+        "parameter1Type": "msg",
+        "parameter2": "",
+        "parameter2Type": "msg",
+        "parameter3": "",
+        "parameter3Type": "msg",
+        "parameter4": "",
+        "parameter4Type": "msg",
+        "parameter5": "",
+        "parameter5Type": "msg",
+        "parameter6": "",
+        "parameter6Type": "msg",
+        "parameter7": "",
+        "parameter7Type": "msg",
+        "parameter8": "",
+        "parameter8Type": "msg",
+        "sendProperty": "payload",
+        "sendPropertyType": "msg",
+        "parameterCount": 0,
+        "jimpFunction": "none",
+        "selectedJimpFunction": {
+            "name": "none",
+            "fn": "none",
+            "description": "Just loads the image.",
+            "parameters": []
+        },
+        "x": 520,
+        "y": 440,
+        "wires": [
+            [
+                "87ab6a08.489988"
+            ]
+        ]
+    },
+    {
+        "id": "87ab6a08.489988",
+        "type": "image viewer",
+        "z": "32f9ca17.4a8c16",
+        "name": "Captured",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "x": 680,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "37f2361c.0f0cfa",
+        "type": "base64",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "action": "",
+        "property": "payload",
+        "x": 880,
+        "y": 440,
+        "wires": [
+            [
+                "be37a30e.ac3d7"
+            ]
+        ]
+    },
+    {
+        "id": "be37a30e.ac3d7",
+        "type": "template",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<img width=\"320px\" height=\"240px\" src=\"data:image/jpg;base64,{{{payload}}}\">",
+        "output": "str",
+        "x": 880,
+        "y": 480,
+        "wires": [
+            [
+                "d4ec56ba.7e2268"
+            ]
+        ]
+    },
+    {
+        "id": "d4ec56ba.7e2268",
+        "type": "ui_template",
+        "z": "32f9ca17.4a8c16",
+        "group": "c7a43587.2944e8",
+        "name": "Dashboard IMG",
+        "order": 0,
+        "width": "6",
+        "height": "5",
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "x": 900,
+        "y": 520,
+        "wires": [
+            []
+        ],
+        "icon": "node-red-contrib-image-tools/image.png"
+    },
+    {
+        "id": "235253d2.71863c",
+        "type": "jimp-image",
+        "z": "32f9ca17.4a8c16",
+        "name": "output as jpeg/buffer",
+        "data": "payload",
+        "dataType": "msg",
+        "ret": "buf",
+        "parameter1": "",
+        "parameter1Type": "msg",
+        "parameter2": "",
+        "parameter2Type": "msg",
+        "parameter3": "",
+        "parameter3Type": "msg",
+        "parameter4": "",
+        "parameter4Type": "msg",
+        "parameter5": "",
+        "parameter5Type": "msg",
+        "parameter6": "",
+        "parameter6Type": "msg",
+        "parameter7": "",
+        "parameter7Type": "msg",
+        "parameter8": "",
+        "parameter8Type": "msg",
+        "sendProperty": "payload",
+        "sendPropertyType": "msg",
+        "parameterCount": 0,
+        "jimpFunction": "none",
+        "selectedJimpFunction": {
+            "name": "none",
+            "fn": "none",
+            "description": "Just loads the image.",
+            "parameters": []
+        },
+        "x": 540,
+        "y": 400,
+        "wires": [
+            [
+                "37f2361c.0f0cfa",
+                "2315c5c0.c20f1a"
+            ]
+        ]
+    },
+    {
+        "id": "9051c659.1a1ed8",
+        "type": "comment",
+        "z": "32f9ca17.4a8c16",
+        "name": "config the src of cam in browser settings",
+        "info": "",
+        "x": 230,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "2315c5c0.c20f1a",
+        "type": "file",
+        "z": "32f9ca17.4a8c16",
+        "name": "Capture from IP Cam",
+        "filename": "C:/Users/Nguyen/Documents/capturenr/capture-usb.jpeg",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "true",
+        "x": 900,
+        "y": 400,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "b431d687.a98898",
+        "type": "jimp-image",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "data": "payload",
+        "dataType": "msg",
+        "ret": "buf",
+        "parameter1": "4294967295",
+        "parameter1Type": "json",
+        "parameter2": "",
+        "parameter2Type": "msg",
+        "parameter3": "",
+        "parameter3Type": "msg",
+        "parameter4": "",
+        "parameter4Type": "msg",
+        "parameter5": "",
+        "parameter5Type": "msg",
+        "parameter6": "",
+        "parameter6Type": "msg",
+        "parameter7": "",
+        "parameter7Type": "msg",
+        "parameter8": "",
+        "parameter8Type": "msg",
+        "sendProperty": "payload",
+        "sendPropertyType": "msg",
+        "parameterCount": 0,
+        "jimpFunction": "convolute_edgedetect",
+        "selectedJimpFunction": {
+            "name": "edgedetect*",
+            "fn": "convolute_edgedetect",
+            "description": "edge detect image (*uses convolute([[0, 1, 0], [1, -4, 1], [0, 1, 0]])",
+            "parameters": []
+        },
+        "x": 350,
+        "y": 480,
+        "wires": [
+            [
+                "e4e81f6d.714ab",
+                "c0e0e82c.c992f8",
+                "8d20e1fd.77e5d"
+            ]
+        ]
+    },
+    {
+        "id": "e4e81f6d.714ab",
+        "type": "image viewer",
+        "z": "32f9ca17.4a8c16",
+        "name": "Edged",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "x": 510,
+        "y": 480,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c0e0e82c.c992f8",
+        "type": "base64",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "action": "",
+        "property": "payload",
+        "x": 880,
+        "y": 600,
+        "wires": [
+            [
+                "3edd19a8.bfc226"
+            ]
+        ]
+    },
+    {
+        "id": "3edd19a8.bfc226",
+        "type": "template",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<img width=\"320px\" height=\"240px\" src=\"data:image/jpg;base64,{{{payload}}}\">",
+        "output": "str",
+        "x": 880,
+        "y": 640,
+        "wires": [
+            [
+                "41e43d80.718384"
+            ]
+        ]
+    },
+    {
+        "id": "41e43d80.718384",
+        "type": "ui_template",
+        "z": "32f9ca17.4a8c16",
+        "group": "c7a43587.2944e8",
+        "name": "Dashboard IMG",
+        "order": 0,
+        "width": "6",
+        "height": "5",
+        "format": "<div ng-bind-html=\"msg.payload\"></div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": false,
+        "templateScope": "local",
+        "x": 900,
+        "y": 680,
+        "wires": [
+            []
+        ],
+        "icon": "node-red-contrib-image-tools/image.png"
+    },
+    {
+        "id": "c64f6f4.307289",
+        "type": "inject",
+        "z": "32f9ca17.4a8c16",
+        "name": "auto/pulse",
+        "props": [
+            {
+                "p": "capture",
+                "v": "true",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 130,
+        "y": 480,
+        "wires": [
+            [
+                "6d581fa9.a95da"
+            ]
+        ]
+    },
+    {
+        "id": "8d20e1fd.77e5d",
+        "type": "file",
+        "z": "32f9ca17.4a8c16",
+        "name": "Capture from IP Cam",
+        "filename": "C:/Users/Nguyen/Documents/capturenr/capture-usb-edge.jpeg",
+        "appendNewline": false,
+        "createDir": false,
+        "overwriteFile": "true",
+        "x": 900,
+        "y": 560,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "baa6cd20.a7c4e",
+        "type": "http in",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "url": "/captured",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 80,
+        "wires": [
+            [
+                "32682c93.c301d4"
+            ]
+        ]
+    },
+    {
+        "id": "32682c93.c301d4",
+        "type": "file in",
+        "z": "32f9ca17.4a8c16",
+        "name": "file captured",
+        "filename": "C:/Users/Nguyen/Documents/capturenr/capture-usb.jpeg",
+        "format": "",
+        "x": 330,
+        "y": 80,
+        "wires": [
+            [
+                "e91916c3.c64d18"
+            ]
+        ]
+    },
+    {
+        "id": "24c64800.495a08",
+        "type": "http response",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "x": 630,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "b16d6683.dd9eb8",
+        "type": "http in",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "url": "hello2",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "d2f654f2.073008"
+            ]
+        ]
+    },
+    {
+        "id": "5bf24ac5.fba0b4",
+        "type": "http response",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 450,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "d2f654f2.073008",
+        "type": "template",
+        "z": "32f9ca17.4a8c16",
+        "name": "pulsing",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html>\n<head>\n     <script type =\"text/JavaScript\">\n         <!--\n            function AutoRefresh( t ) {\n               setTimeout(\"location.reload(true);\", t);\n            }\n         //-->\n      </script>\n</head>\n<body onload = \"JavaScript:AutoRefresh(1000);\">\n<img crossorigin=anonymous src=\"http://localhost:1880/captured\"  width=\"500\" height=\"333\">\n</body>\n</html>\n",
+        "output": "str",
+        "x": 320,
+        "y": 120,
+        "wires": [
+            [
+                "5bf24ac5.fba0b4"
+            ]
+        ]
+    },
+    {
+        "id": "91a52a56.9cd338",
+        "type": "http request",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "http://localhost:1880/captured",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 390,
+        "y": 200,
+        "wires": [
+            [
+                "50bcc1fd.86c"
+            ]
+        ]
+    },
+    {
+        "id": "50bcc1fd.86c",
+        "type": "image viewer",
+        "z": "32f9ca17.4a8c16",
+        "name": "check from DIR",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "x": 560,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e91916c3.c64d18",
+        "type": "change",
+        "z": "32f9ca17.4a8c16",
+        "name": "Set Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.content-type",
+                "pt": "msg",
+                "to": "image/png",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 490,
+        "y": 80,
+        "wires": [
+            [
+                "24c64800.495a08"
+            ]
+        ]
+    },
+    {
+        "id": "a8096b88.095288",
+        "type": "inject",
+        "z": "32f9ca17.4a8c16",
+        "name": "auto checking pulse",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 200,
+        "y": 200,
+        "wires": [
+            [
+                "91a52a56.9cd338"
+            ]
+        ]
+    },
+    {
+        "id": "edd30856.75df48",
+        "type": "comment",
+        "z": "32f9ca17.4a8c16",
+        "name": "Sending captured to localhost",
+        "info": "",
+        "x": 220,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "f083084b.3b91a8",
+        "type": "comment",
+        "z": "32f9ca17.4a8c16",
+        "name": "Check if image is changed every 1s",
+        "info": "",
+        "x": 240,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "4cd2d8d9.88dc38",
+        "type": "http in",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "url": "/edged",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 790,
+        "y": 80,
+        "wires": [
+            [
+                "c5b376e6.e8ab28"
+            ]
+        ]
+    },
+    {
+        "id": "c5b376e6.e8ab28",
+        "type": "file in",
+        "z": "32f9ca17.4a8c16",
+        "name": "file captured",
+        "filename": "C:/Users/Nguyen/Documents/capturenr/capture-usb-edge.jpeg",
+        "format": "",
+        "x": 950,
+        "y": 80,
+        "wires": [
+            [
+                "62a48d68.298b94"
+            ]
+        ]
+    },
+    {
+        "id": "2ad65348.449d9c",
+        "type": "http response",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "x": 1250,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "bb6648a8.4acf18",
+        "type": "http in",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "url": "hello3",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 790,
+        "y": 120,
+        "wires": [
+            [
+                "d11e02d4.38b3a"
+            ]
+        ]
+    },
+    {
+        "id": "7cff24.98db70dc",
+        "type": "http response",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 1070,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "d11e02d4.38b3a",
+        "type": "template",
+        "z": "32f9ca17.4a8c16",
+        "name": "pulsing",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "<!DOCTYPE html>\n<html>\n<head>\n     <script type =\"text/JavaScript\">\n         <!--\n            function AutoRefresh( t ) {\n               setTimeout(\"location.reload(true);\", t);\n            }\n         //-->\n      </script>\n</head>\n<body onload = \"JavaScript:AutoRefresh(1000);\">\n<img crossorigin=anonymous src=\"http://localhost:1880/hello-file\"  width=\"500\" height=\"333\">\n</body>\n</html>\n",
+        "output": "str",
+        "x": 940,
+        "y": 120,
+        "wires": [
+            [
+                "7cff24.98db70dc"
+            ]
+        ]
+    },
+    {
+        "id": "62a48d68.298b94",
+        "type": "change",
+        "z": "32f9ca17.4a8c16",
+        "name": "Set Headers",
+        "rules": [
+            {
+                "t": "set",
+                "p": "headers",
+                "pt": "msg",
+                "to": "{}",
+                "tot": "json"
+            },
+            {
+                "t": "set",
+                "p": "headers.content-type",
+                "pt": "msg",
+                "to": "image/png",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 1110,
+        "y": 80,
+        "wires": [
+            [
+                "2ad65348.449d9c"
+            ]
+        ]
+    },
+    {
+        "id": "f5e86a8c.af9188",
+        "type": "comment",
+        "z": "32f9ca17.4a8c16",
+        "name": "Sending Edged to localhost",
+        "info": "",
+        "x": 830,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "321904cd.587aac",
+        "type": "inject",
+        "z": "32f9ca17.4a8c16",
+        "name": "auto checking pulse",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 820,
+        "y": 200,
+        "wires": [
+            [
+                "4459eeab.cbd59"
+            ]
+        ]
+    },
+    {
+        "id": "4459eeab.cbd59",
+        "type": "http request",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "http://localhost:1880/edged",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "x": 1010,
+        "y": 200,
+        "wires": [
+            [
+                "e580e727.9aebf8"
+            ]
+        ]
+    },
+    {
+        "id": "e580e727.9aebf8",
+        "type": "image viewer",
+        "z": "32f9ca17.4a8c16",
+        "name": "check from DIR",
+        "width": 160,
+        "data": "payload",
+        "dataType": "msg",
+        "x": 1180,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "bd60187.ad7abe8",
+        "type": "comment",
+        "z": "32f9ca17.4a8c16",
+        "name": "Check if image is changed every 1s",
+        "info": "",
+        "x": 860,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "1053ea57.48d5e6",
+        "type": "catch",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "scope": null,
+        "uncaught": false,
+        "x": 100,
+        "y": 300,
+        "wires": [
+            [
+                "dc6bcf78.b42dc"
+            ]
+        ]
+    },
+    {
+        "id": "dc6bcf78.b42dc",
+        "type": "debug",
+        "z": "32f9ca17.4a8c16",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 270,
+        "y": 300,
+        "wires": []
+    },
+    {
+        "id": "56367e0c.e502d",
+        "type": "comment",
+        "z": "32f9ca17.4a8c16",
+        "name": "README",
+        "info": "config dir address in:\n1. file captured\n2. Capture from IP Cam",
+        "x": 140,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "65b3c6df.dd39d8",
+        "type": "ui_group",
+        "name": "Streaming2",
+        "tab": "e1c33876.4757f8",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "c7a43587.2944e8",
+        "type": "ui_group",
+        "name": "capture",
+        "tab": "e1c33876.4757f8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "e1c33876.4757f8",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]
